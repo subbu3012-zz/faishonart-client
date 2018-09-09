@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router'
-
+import { environment } from './../../environments/environment'
 
 @Component({
     selector: 'faishon',
@@ -13,6 +13,7 @@ export class FaishonComponent implements OnInit {
     constructor(
         public activatedRoute: ActivatedRoute,
         public rtr: Router) {
+        window.document.title = 'Faishonart - ' + environment.appVersion;
     }
 
     ngOnInit() {

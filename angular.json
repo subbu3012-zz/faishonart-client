@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hyderabad-golf-club": {
+    "faishonart-client": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -54,18 +54,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "hyderabad-golf-club:build"
+            "browserTarget": "faishonart-client:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "hyderabad-golf-club:build:production"
+              "browserTarget": "faishonart-client:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hyderabad-golf-club:build"
+            "browserTarget": "faishonart-client:build"
           }
         },
         "test": {
@@ -104,7 +104,7 @@
         }
       }
     },
-    "hyderabad-golf-club-e2e": {
+    "faishonart-client-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -113,7 +113,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "hyderabad-golf-club:serve"
+            "devServerTarget": "faishonart-client:serve"
           }
         },
         "lint": {
@@ -130,7 +130,7 @@
       }
     }
   },
-  "defaultProject": "hyderabad-golf-club",
+  "defaultProject": "faishonart-client",
   "schematics": {
     "@schematics/angular:class": {
       "spec": false

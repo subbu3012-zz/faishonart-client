@@ -1,4 +1,4 @@
-# at-golf
+# faishonart-client
 
 ## Pre-requisities: 
 * node's version >= v7.0.0 //check the version with `node -v` command.
