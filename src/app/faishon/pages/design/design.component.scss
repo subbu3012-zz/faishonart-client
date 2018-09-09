@@ -1,0 +1,68 @@
+@import '../../../../styles/app.scss';
+
+mat-progress-bar{
+    margin-top: 10px;
+}
+
+.new-task-create-container{
+    width: 100%;
+    height: 100px;
+    margin: 20px 0px;
+    border: 2px dashed grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #595959;
+    
+    &:hover{
+        background: #f2f2f2;
+    }
+
+    & p{
+        margin: 0;
+        font-weight: bold;
+        font-size: 32px;
+    }
+
+    & mat-icon{
+        color: mat-color($mat-app-primary);
+        font-size: 56px;
+        margin-bottom: 32px;
+    }
+}
+
+.upload-images-container{
+    border: grey dashed 2px;
+    cursor:pointer;
+    text-align: center;
+    padding: 12px 0 0 0;
+    position: relative;
+    margin: 15px 0;
+
+    &:hover{
+        background: #f2f2f2;
+    }
+
+    & .input-upload{
+        position: absolute;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        background: #00f;
+        z-index: 101;
+        cursor: pointer 
+    }
+}
+
+.uploaded-image{
+    max-width: 300px;
+}
+
+.header-text{
+    font-size: 28px;
+    color: mat-color($mat-app-primary);
+    font-weight: bold;
+    letter-spacing: 0.175rem
+}

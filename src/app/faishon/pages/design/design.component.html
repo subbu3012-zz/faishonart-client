@@ -1,0 +1,167 @@
+<ng-container *ngTemplateOutlet="stepperTemplate"></ng-container>
+
+<ng-template #stepperTemplate>
+    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+        <mat-step>
+            <ng-template matStepLabel>{{this.isLoggedIn ? 'Task List' : 'Login'}}</ng-template>
+            <div *ngIf="isLoggedIn; else loginTemplate">
+                <ng-container *ngTemplateOutlet="taskListTemplate"></ng-container>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Start Des(AI)gning</ng-template>
+            <ng-container *ngTemplateOutlet="startDesaignTemplate"></ng-container>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Setup Mood</ng-template>
+            <ng-container *ngTemplateOutlet="setupMoodTemplate"></ng-container>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Download Designs</ng-template>
+            <ng-container *ngTemplateOutlet="downloadDesignsTemplate"></ng-container>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            <ng-container *ngTemplateOutlet="thankyouTemplate"></ng-container>
+        </mat-step>
+    </mat-horizontal-stepper>
+</ng-template>
+
+<ng-template #containerTemplate>
+    <div class="container-fluid">
+        <div class="row">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #loginTemplate>
+    <div class="container">
+        <div class="row">
+            <div class="col-4 offset-4 center-text">
+                <mat-form-field>
+                    <input matInput placeholder="Login Id">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Passcode">
+                </mat-form-field>
+                <button (click)="this.isLoggedIn = true" mat-raised-button color="primary">Login</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #taskListTemplate>
+    <div (click)="changeStepperLevelBy(1)" class="new-task-create-container">
+        <p>Start a new task
+        </p>
+        <mat-icon>add</mat-icon>
+    </div>
+    <table class="table table-hover table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Task Id</th>
+                <th>Task Name</th>
+                <th>Initiated On</th>
+                <th>Task Status</th>
+                <th>Progress</th>
+                <th>Estimated Time</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let task of taskList">
+                <td>{{task.taskId}}</td>
+                <td>{{task.taskName}}</td>
+                <td>{{task.taskInitiatedOn}}</td>
+                <td>{{task.taskStatus}}</td>
+                <td>
+                    <mat-progress-bar mode="determinate" [value]='task.taskProgress'></mat-progress-bar>
+                </td>
+                <td>{{task.estimatedTime}}</td>
+                <td>
+                    <button *ngIf="task.action" (click)="changeStepperLevelBy(task.level + 1)" mat-raised-button color="primary">{{task.action}}
+                        <mat-icon>arrow_right</mat-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>
+
+<ng-template #startDesaignTemplate>
+    <ng-container *ngTemplateOutlet="headingTemplate;context{heading:'Start a new des(ai)gn task'}"></ng-container>
+    <div class="container center-text">
+        <div class="row">
+            <div class="col-4 offset-4">
+                <mat-form-field>
+                    <input matInput placeholder="Task Name">
+                </mat-form-field>
+                <mat-form-field>
+                    <textarea matInput placeholder="Task Description"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <ng-container *ngTemplateOutlet="imageUploadTemplate;context{imageUrls:localDesignImageUrls}"></ng-container>
+
+        <button mat-raised-button color="primary" class="mb-3" (click)="changeStepperLevelBy(1)">Start Des(AI)gning
+            <mat-icon>arrow_right</mat-icon>
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #setupMoodTemplate>
+    <ng-container *ngTemplateOutlet="headingTemplate;context{heading:'Setup Mood For Denim - Men'}"></ng-container>
+    <div class="container center-text">
+        <ng-container *ngTemplateOutlet="imageUploadTemplate;context{imageUrls:localMoodImageUrls}"></ng-container>
+
+        <button mat-raised-button color="primary" class="mb-3" (click)="changeStepperLevelBy(1)">Generate Des(AI)gn models
+            <mat-icon>arrow_right</mat-icon>
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #downloadDesignsTemplate>
+    <ng-container *ngTemplateOutlet="headingTemplate;context{heading:'Preview and Download Designs For Denim - Men'}"></ng-container>
+    <div class="container center-text">
+        <button mat-raised-button color="primary" class="mb-3" (click)="changeStepperLevelBy(1)">Download Designs
+            <mat-icon>save_alt</mat-icon>
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #thankyouTemplate>
+    <div class="container center-text">
+        <div class="image-container">
+            <img src="../../../../assets/images/thank_you.jpg" height="400px" width="600px">
+        </div>
+        <button mat-raised-button color="primary" class="mb-3" (click)="changeStepperLevelBy(0)">Go Back Home
+            <mat-icon>home</mat-icon>
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #headingTemplate let-heading="heading">
+    <div class="col-12">
+        <p class="header-text center-text">{{heading}}</p>
+    </div>
+</ng-template>
+
+
+<ng-template #imageUploadTemplate let-imageUrls="imageUrls">
+    <div class="card-columns">
+        <div class="card" *ngFor="let imageUrl of imageUrls">
+            <img [src]="imageUrl" class="img-responsive card-img-top">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 offset-4">
+            <div class="upload-images-container">
+                <input type='file' (change)="fileChangeEvent($event,imageUrls)" placeholder="Upload file..." class="input-upload" multiple>
+                <mat-icon style="font-size:36px;" class="primary-color">backup</mat-icon>
+                <p>{{imageUrls.length ? 'Upload More Images' : 'Upload Images'}}</p>
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,6 @@
+/node_modules/
+/nohup.out
+/dist/
+yarn-error.log
+/.vscode/
+yarn.lock

@@ -1,0 +1,95 @@
+@import '../../../../styles/app.scss';
+.fh-container{
+    width: 100vw;
+    height: 100vh;
+    
+    &__1, &__2{
+        height: 100%;
+        width: 50%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        overflow-x: hidden;
+        display: flex;
+        align-items: center;
+    }
+
+    &__1{
+        left: 0;
+        background-color: mat-color($mat-app-primary);
+        justify-content: flex-end;
+    }
+    &__2{
+        right: 0;
+        background-color: white;
+        justify-content: flex-start;
+    }
+
+    & .fh-button{
+        padding: 15px 30px 15px 30px;
+        font-size: 32px;
+        border:0;
+        animation: opacity-animation;
+        animation-duration: 1s;
+        cursor: pointer;
+
+       &__start{
+        background-color: white !important;
+        letter-spacing: 0.15rem;
+        color: black;
+        padding-right: 5px;
+        border-radius: 0 0 0 16px;
+    }
+
+        &__desaigning{
+            background-color: mat-color($mat-app-primary);
+            letter-spacing: 0.15rem;
+            color: white;
+            padding-left: 5px;
+            border-radius: 0 16px 0 0;
+        }
+    }
+
+    & .fh-title-container{
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        color: mat-color($mat-app-primary);
+        font-weight: bold;
+        font-size: 28px;
+        z-index: 1001;
+        text-align: center;
+        animation-name: top-animation;
+        animation-duration: 1s; 
+    }
+
+    & .fh-arrow-container{
+        position: absolute;
+        bottom: 0px;
+        left: -10px;
+        width: 225px;
+        color: mat-color($mat-app-primary);
+        font-weight: bold;
+        z-index: 1001;
+        text-align: center;
+        animation-name: left-animation;
+        animation-duration: 0.5s;
+    }
+}
+
+@keyframes opacity-animation {
+    0%   {opacity: 0}
+    100% {opacity: 1;}
+}
+
+@keyframes left-animation {
+    0%   {left: -235px}
+    100% {left: -10px}
+}
+
+@keyframes top-animation {
+    0%   {top: -235px}
+    50% {top: 50px}
+    100% {top: 10px}
+}
+

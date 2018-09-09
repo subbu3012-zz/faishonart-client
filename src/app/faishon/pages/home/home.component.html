@@ -1,0 +1,22 @@
+<div class="fh-container">
+    <div class="fh-container__1">
+        <button (click)="this.rtr.navigateByUrl('/faishon/design')" class="fh-button fh-button__start" disableRipple="true">
+            <span class="fh-button__start-label">Start</span>
+        </button>
+    </div>
+    <div class="fh-container__2">
+        <button (click)="this.rtr.navigateByUrl('/faishon/design')" class="fh-button fh-button__desaigning" disableRipple="true">
+            <span class="fh-button__desaigning-label">Des(AI)gning</span>
+        </button>
+    </div>
+    <div class="fh-title-container">
+        <ng-container *ngTemplateOutlet="verticalTextTemplate;context:{targetString:'FAISHONART'}"></ng-container>
+    </div>
+    <div class="fh-arrow-container">
+        <img src="../../../../assets/images/right-arrow.svg" height="100%" width="100%">
+    </div>
+</div>
+
+<ng-template #verticalTextTemplate let-targetStringArray="targetString.split('')">
+    <p class="m-0" *ngFor="let char of targetStringArray">{{char}}</p>
+</ng-template>
