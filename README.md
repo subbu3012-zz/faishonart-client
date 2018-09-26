@@ -5,7 +5,7 @@
 * npm's version >= v3.2.0 // check the version with `npm -v` command.
 
 ### Setting up project:
-* Clone the repo. cd into at-golf(`cd at-golf`) and run these commands.
+* Clone the repo. cd into faishonart-client(`cd faishonart-client`) and run these commands.
 * `npm install` //for installing all the dependencies of the project.
 
 ### For development: 
@@ -14,7 +14,7 @@
 
 ### For production and deployment:
 * `npm run build`
-* Once the above command is run, a 'dist' folder will be created in the same directory('/at-golf').
+* Once the above command is run, a 'dist' folder will be created in the same directory('/faishonart-client').
 * 'dist' folder contains an index.html, required .js files (app.js, vendor.js, polyfills.js and other module chunks), and an assets folder(which contains images and other public media).
 * move this folder to server and point the url to the index.html in this folder which is quite similar to pointing to a normal html file on server.
 
